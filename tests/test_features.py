@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from uwb_fall.features import complex_magnitude, window_features_v2
+from uwb_fall.features import complex_magnitude, power_features, window_features_v2
 
 
 def test_blockwise_iq_conversion() -> None:
@@ -24,3 +24,5 @@ def test_invalid_shapes_are_rejected() -> None:
         complex_magnitude(np.zeros((2, 3, 5)))
     with pytest.raises(ValueError):
         window_features_v2(np.zeros((2, 8)))
+    with pytest.raises(ValueError):
+        power_features(np.zeros((2, 8)))

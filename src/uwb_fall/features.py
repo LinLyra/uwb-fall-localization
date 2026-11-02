@@ -51,6 +51,17 @@ def window_features_v2(cir: np.ndarray, range_bands: int = 16) -> np.ndarray:
     # not invariant to a static complex offset and would retain room identity.
     power = i * i + q * q
 
+    return power_features(power, range_bands=range_bands)
+
+
+def power_features(power: np.ndarray, range_bands: int = 16) -> np.ndarray:
+    """Extract the v2 feature vector from complex residual power ``(R,T,B)``."""
+    power = np.asarray(power, dtype=np.float64)
+    if power.ndim != 3 or power.shape[1] < 2:
+        raise ValueError("expected residual power with shape (radars, time, range_bins)")
+    if range_bands < 1:
+        raise ValueError("range_bands must be positive")
+
     frame_energy = np.mean(power, axis=2)
     temporal = _summarize(frame_energy, axis=1)
     velocity = _summarize(np.abs(np.diff(frame_energy, axis=1)), axis=1)

@@ -1,0 +1,14 @@
+{
+  "transform": "fixed independent time permutation per radar and range bin within each 2-second window",
+  "seed": 2027,
+  "feature_count": 82,
+  "prediction_count": 82,
+  "ranking_f1_mean": 0.6307692307692309,
+  "f1_by_tiou": {
+    "0.1": 0.7692307692307693,
+    "0.3": 0.7076923076923077,
+    "0.5": 0.4153846153846154,
+    "0.7": 0.18461538461538463
+  },
+  "false_alarms_per_hour_at_0.3": 8.29740502725128
+}
