@@ -56,3 +56,22 @@ to range position, not only by whether it raises validation F1.
 Next checks are paired stream-level differences, range translation/masking,
 radar removal, and source-boundary analysis. A larger temporal network remains
 deferred until those controls are complete.
+
+## Paired stream comparisons
+
+Comparisons resample complete streams in pairs for 10,000 bootstrap replicates.
+The randomization test enumerates all 32 possible stream-wise swaps. Reported
+p-values are currently unadjusted; Holm correction will be applied jointly
+after all four preregistered hypothesis families are complete.
+
+| Comparison (A − B) | Ranking-F1 difference | Paired 95% interval | Exact two-sided p |
+|---|---:|---:|---:|
+| Nested RF − official energy | +0.3424 | [+0.2751, +0.3949] | 0.0625 |
+| Clean RF − motion-shuffled RF | +0.0267 | [−0.0180, +0.1094] | 0.7500 |
+
+The RF-versus-energy effect is large and consistent under stream resampling,
+but five streams leave the exact test underpowered: with 32 assignments, a
+two-sided p-value cannot fall below 0.0625 for a result aligned in every stream.
+The clean-versus-shuffled interval includes zero and the randomization result is
+unambiguous. There is no evidence here that temporal coherence accounts for a
+substantial part of the RF gain.

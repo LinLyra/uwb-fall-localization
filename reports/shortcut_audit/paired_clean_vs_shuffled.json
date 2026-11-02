@@ -1,0 +1,16 @@
+{
+  "a": "nested_rf_clean",
+  "b": "nested_rf_motion_shuffled",
+  "score_a": 0.6574712643678161,
+  "score_b": 0.6307692307692309,
+  "paired_difference_a_minus_b": 0.02670203359858525,
+  "stream_bootstrap_replicates": 10000,
+  "paired_difference_ci_95": [
+    -0.018034825870646642,
+    0.10936819172113277
+  ],
+  "exact_randomization_assignments": 32,
+  "two_sided_randomization_p": 0.75,
+  "seed": 2027,
+  "note": "Five streams limit power; effect size and interval are primary."
+}

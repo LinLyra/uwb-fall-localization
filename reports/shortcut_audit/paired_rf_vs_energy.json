@@ -1,0 +1,16 @@
+{
+  "a": "nested_rf_all",
+  "b": "official_energy",
+  "score_a": 0.6574712643678161,
+  "score_b": 0.3150912106135987,
+  "paired_difference_a_minus_b": 0.34238005375421743,
+  "stream_bootstrap_replicates": 10000,
+  "paired_difference_ci_95": [
+    0.2751322751322751,
+    0.3949043002734278
+  ],
+  "exact_randomization_assignments": 32,
+  "two_sided_randomization_p": 0.0625,
+  "seed": 2027,
+  "note": "Five streams limit power; effect size and interval are primary."
+}
