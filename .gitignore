@@ -7,6 +7,7 @@ data/
 artifacts/
 checkpoints/
 runs/
+data/cache/
 *.pt
 *.pth
 *.onnx

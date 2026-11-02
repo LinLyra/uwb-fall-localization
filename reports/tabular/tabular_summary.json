@@ -1,0 +1,53 @@
+{
+  "logistic_v2": {
+    "decoder": {
+      "threshold": 0.9,
+      "merge_gap": 1.0,
+      "trim": 0.75
+    },
+    "ranking_f1_mean": 0.3699284646594063,
+    "f1_by_tiou": {
+      "0.1": 0.5178571428571428,
+      "0.3": 0.40358744394618834,
+      "0.5": 0.1883408071748879,
+      "0.7": 0.05381165919282511
+    },
+    "false_alarms_per_hour_at_0.3": 54.177174001464245,
+    "prediction_count": 185,
+    "validation_trials": 144
+  },
+  "hist_gradient_boosting": {
+    "decoder": {
+      "threshold": 0.9,
+      "merge_gap": 0.5,
+      "trim": 0.75
+    },
+    "ranking_f1_mean": 0.6666666666666666,
+    "f1_by_tiou": {
+      "0.1": 0.8211920529801325,
+      "0.3": 0.728476821192053,
+      "0.5": 0.4503311258278146,
+      "0.7": 0.11920529801324502
+    },
+    "false_alarms_per_hour_at_0.3": 14.154396811193362,
+    "prediction_count": 112,
+    "validation_trials": 144
+  },
+  "random_forest": {
+    "decoder": {
+      "threshold": 0.65,
+      "merge_gap": 0.0,
+      "trim": 0.75
+    },
+    "ranking_f1_mean": 0.6911764705882354,
+    "f1_by_tiou": {
+      "0.1": 0.823529411764706,
+      "0.3": 0.75,
+      "0.5": 0.5,
+      "0.7": 0.2058823529411765
+    },
+    "false_alarms_per_hour_at_0.3": 8.78548767591312,
+    "prediction_count": 104,
+    "validation_trials": 144
+  }
+}

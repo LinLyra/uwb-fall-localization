@@ -1,0 +1,12 @@
+{
+  "unit": "validation stream",
+  "replicates": 2000,
+  "seed": 2027,
+  "estimate": 0.6911764705882354,
+  "bootstrap_mean": 0.6831814626202886,
+  "ci_95_percentile": [
+    0.5783132530120482,
+    0.7398373983739838
+  ],
+  "warning": "Decoder hyperparameters were selected on this validation set; this interval measures stream variability, not an unbiased generalization interval."
+}
