@@ -1,6 +1,12 @@
 import pytest
 
-from uwb_fall.temporal import Event, event_metrics, hysteresis_decode, temporal_iou
+from uwb_fall.temporal import (
+    Event,
+    ScoredEvent,
+    event_metrics,
+    hysteresis_decode,
+    temporal_iou,
+)
 
 
 def test_temporal_iou() -> None:
@@ -20,8 +26,23 @@ def test_hysteresis_merges_short_gap() -> None:
 
 
 def test_event_metrics_matches_once() -> None:
-    report = event_metrics([Event(9, 21), Event(40, 45)], [Event(10, 20)])
+    report = event_metrics(
+        [ScoredEvent(Event(9, 21), 0.9), ScoredEvent(Event(40, 45), 0.2)],
+        [Event(10, 20)],
+    )
     assert report["hits"] == 1
     assert report["false_alarms"] == 1
     assert report["misses"] == 0
+
+
+def test_confidence_order_controls_official_greedy_match() -> None:
+    target = Event(10, 20)
+    predictions = [
+        ScoredEvent(Event(10, 16), 0.9),
+        ScoredEvent(Event(10, 20), 0.1),
+    ]
+    report = event_metrics(predictions, [target], iou_threshold=0.3)
+    assert report["hits"] == 1
+    assert report["false_alarms"] == 1
+    assert report["mean_tiou"] == pytest.approx(0.6)
 

@@ -20,6 +20,18 @@ class Event:
             raise ValueError("event must satisfy 0 <= start < end")
 
 
+@dataclass(frozen=True)
+class ScoredEvent:
+    """Predicted event with a confidence used by official greedy matching."""
+
+    event: Event
+    score: float
+
+    def __post_init__(self) -> None:
+        if not np.isfinite(self.score):
+            raise ValueError("score must be finite")
+
+
 def temporal_iou(a: Event, b: Event) -> float:
     intersection = max(0, min(a.end, b.end) - max(a.start, b.start))
     union = max(a.end, b.end) - min(a.start, b.start)
@@ -66,33 +78,36 @@ def hysteresis_decode(
 
 
 def event_metrics(
-    predictions: Iterable[Event],
+    predictions: Iterable[ScoredEvent],
     targets: Iterable[Event],
     *,
     iou_threshold: float = 0.3,
 ) -> dict[str, float | int]:
-    """Greedily match events by descending tIoU and report event statistics."""
+    """Match predictions one-to-one in descending confidence order.
+
+    This mirrors the public ABC 2027 protocol: confidence determines the
+    prediction order, and each prediction takes the highest-tIoU unmatched
+    target that clears the requested threshold.
+    """
     if not 0 <= iou_threshold <= 1:
         raise ValueError("iou_threshold must lie in [0, 1]")
-    predicted = list(predictions)
+    predicted = sorted(predictions, key=lambda item: item.score, reverse=True)
     truth = list(targets)
-    candidates = sorted(
-        (
-            (temporal_iou(p, t), pi, ti)
-            for pi, p in enumerate(predicted)
-            for ti, t in enumerate(truth)
-        ),
-        reverse=True,
-    )
-    used_p: set[int] = set()
     used_t: set[int] = set()
     matches: list[tuple[Event, Event, float]] = []
-    for iou, pi, ti in candidates:
-        if iou < iou_threshold or pi in used_p or ti in used_t:
+    for prediction in predicted:
+        candidates = [
+            (temporal_iou(prediction.event, target), target_index)
+            for target_index, target in enumerate(truth)
+            if target_index not in used_t
+        ]
+        if not candidates:
             continue
-        used_p.add(pi)
+        iou, ti = max(candidates)
+        if iou < iou_threshold:
+            continue
         used_t.add(ti)
-        matches.append((predicted[pi], truth[ti], iou))
+        matches.append((prediction.event, truth[ti], iou))
 
     hits = len(matches)
     false_alarms = len(predicted) - hits
