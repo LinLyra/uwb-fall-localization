@@ -38,3 +38,19 @@ leave-one-stream-out decoder selection or a new untouched evaluation split.
 The large gain is credible enough to continue investigating but not sufficient
 by itself to claim state of the art. Required next checks are feature-group
 ablation, per-stream failure analysis, and nested selection.
+
+## Feature-group ablation
+
+| Variant | Ranking F1 |
+|---|---:|
+| All features | 0.6912 |
+| Without range features | 0.6095 |
+| Without cross-radar fractions/entropy | 0.6982 |
+| Without peak-range motion | **0.7083** |
+| Temporal only | 0.6056 |
+| Range only | 0.6860 |
+
+Coarse range structure carries most of the discriminative signal. Peak-range
+argmax motion is counterproductive, plausibly because multipath makes the peak
+bin unstable. Nested decoder selection confirms the 76-feature variant at
+0.7080; see `../nested/README.md`.
