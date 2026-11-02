@@ -58,6 +58,12 @@ def main() -> None:
     score_a = score(pred_a, ground, durations)
     score_b = score(pred_b, ground, durations)
     observed = score_a - score_b
+    per_stream = {}
+    for stream in streams:
+        local_durations = {stream: durations[stream]}
+        local_a = score(by_a[stream], by_gt[stream], local_durations)
+        local_b = score(by_b[stream], by_gt[stream], local_durations)
+        per_stream[stream] = {"score_a": local_a, "score_b": local_b, "difference": local_a - local_b}
     rng = np.random.default_rng(args.seed)
     bootstrap: list[float] = []
     for _ in range(args.replicates):
@@ -99,6 +105,7 @@ def main() -> None:
         ],
         "exact_randomization_assignments": int(len(random_array)),
         "two_sided_randomization_p": p_value,
+        "per_stream": per_stream,
         "seed": args.seed,
         "note": "Five streams limit power; effect size and interval are primary.",
     }

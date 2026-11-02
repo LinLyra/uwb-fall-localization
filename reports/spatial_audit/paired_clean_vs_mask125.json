@@ -1,0 +1,43 @@
+{
+  "a": "nested_rf_clean",
+  "b": "mask125",
+  "score_a": 0.6574712643678161,
+  "score_b": 0.6137566137566138,
+  "paired_difference_a_minus_b": 0.04371465061120228,
+  "stream_bootstrap_replicates": 10000,
+  "paired_difference_ci_95": [
+    -0.03344545432858603,
+    0.11904761904761896
+  ],
+  "exact_randomization_assignments": 32,
+  "two_sided_randomization_p": 0.5,
+  "per_stream": {
+    "val_00": {
+      "score_a": 0.7101449275362319,
+      "score_b": 0.6507936507936508,
+      "difference": 0.059351276742581116
+    },
+    "val_01": {
+      "score_a": 0.7407407407407408,
+      "score_b": 0.5777777777777778,
+      "difference": 0.16296296296296298
+    },
+    "val_02": {
+      "score_a": 0.6178861788617886,
+      "score_b": 0.6486486486486486,
+      "difference": -0.030762469786859925
+    },
+    "val_03": {
+      "score_a": 0.38095238095238093,
+      "score_b": 0.3703703703703704,
+      "difference": 0.010582010582010526
+    },
+    "val_04": {
+      "score_a": 0.6666666666666666,
+      "score_b": 0.6666666666666666,
+      "difference": 0.0
+    }
+  },
+  "seed": 2027,
+  "note": "Five streams limit power; effect size and interval are primary."
+}

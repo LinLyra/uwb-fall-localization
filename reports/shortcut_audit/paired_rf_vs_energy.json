@@ -11,6 +11,33 @@
   ],
   "exact_randomization_assignments": 32,
   "two_sided_randomization_p": 0.0625,
+  "per_stream": {
+    "val_00": {
+      "score_a": 0.7101449275362319,
+      "score_b": 0.3018867924528302,
+      "difference": 0.40825813508340175
+    },
+    "val_01": {
+      "score_a": 0.7407407407407408,
+      "score_b": 0.43209876543209874,
+      "difference": 0.30864197530864207
+    },
+    "val_02": {
+      "score_a": 0.6178861788617886,
+      "score_b": 0.2839506172839506,
+      "difference": 0.33393556157783805
+    },
+    "val_03": {
+      "score_a": 0.38095238095238093,
+      "score_b": 0.2222222222222222,
+      "difference": 0.15873015873015872
+    },
+    "val_04": {
+      "score_a": 0.6666666666666666,
+      "score_b": 0.20000000000000004,
+      "difference": 0.46666666666666656
+    }
+  },
   "seed": 2027,
   "note": "Five streams limit power; effect size and interval are primary."
 }

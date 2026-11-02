@@ -1,0 +1,128 @@
+{
+  "range_shift_-24": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "range_shift_-16": {
+    "ranking_f1_mean": 0.1869918699186992,
+    "f1_at_0.3": 0.19512195121951217,
+    "f1_at_0.7": 0.024390243902439022,
+    "false_alarms_per_hour_at_0.3": 3.41657854063288,
+    "prediction_count": 17
+  },
+  "range_shift_-8": {
+    "ranking_f1_mean": 0.6611570247933884,
+    "f1_at_0.3": 0.694214876033058,
+    "f1_at_0.7": 0.2644628099173554,
+    "false_alarms_per_hour_at_0.3": 5.85699178394208,
+    "prediction_count": 62
+  },
+  "range_shift_+8": {
+    "ranking_f1_mean": 0.3365079365079365,
+    "f1_at_0.3": 0.3238095238095238,
+    "f1_at_0.7": 0.07619047619047618,
+    "false_alarms_per_hour_at_0.3": 10.24973562189864,
+    "prediction_count": 48
+  },
+  "range_shift_+16": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.48808264866184004,
+    "prediction_count": 2
+  },
+  "range_shift_+24": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "range_mask_0.125": {
+    "ranking_f1_mean": 0.6137566137566138,
+    "f1_at_0.3": 0.6349206349206349,
+    "f1_at_0.7": 0.14285714285714288,
+    "false_alarms_per_hour_at_0.3": 9.27357032457496,
+    "prediction_count": 81
+  },
+  "range_mask_0.250": {
+    "ranking_f1_mean": 0.17582417582417578,
+    "f1_at_0.3": 0.15384615384615383,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 8.29740502725128,
+    "prediction_count": 29
+  },
+  "range_mask_0.500": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "drop_radar_0": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "drop_radar_1": {
+    "ranking_f1_mean": 0.042194092827004225,
+    "f1_at_0.3": 0.02531645569620253,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 5.368909135280241,
+    "prediction_count": 34
+  },
+  "drop_radar_2": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "drop_highest_energy": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "radar_order_021": {
+    "ranking_f1_mean": 0.30612244897959184,
+    "f1_at_0.3": 0.3469387755102041,
+    "f1_at_0.7": 0.04081632653061224,
+    "false_alarms_per_hour_at_0.3": 6.83315708126576,
+    "prediction_count": 32
+  },
+  "radar_order_102": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 6.83315708126576,
+    "prediction_count": 14
+  },
+  "radar_order_120": {
+    "ranking_f1_mean": 0.008888888888888889,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 3.9046611892947203,
+    "prediction_count": 8
+  },
+  "radar_order_201": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.48808264866184004,
+    "prediction_count": 1
+  },
+  "radar_order_210": {
+    "ranking_f1_mean": 0.04329004329004329,
+    "f1_at_0.3": 0.051948051948051945,
+    "f1_at_0.7": 0.025974025974025972,
+    "false_alarms_per_hour_at_0.3": 3.9046611892947203,
+    "prediction_count": 14
+  }
+}

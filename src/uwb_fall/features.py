@@ -83,3 +83,16 @@ def power_features(power: np.ndarray, range_bands: int = 16) -> np.ndarray:
 
     result = np.concatenate([temporal, velocity, ranges, fractions, [entropy], peak_motion])
     return np.nan_to_num(result, nan=0.0, posinf=0.0, neginf=0.0).astype(np.float32)
+
+
+def shift_range(power: np.ndarray, offset: int) -> np.ndarray:
+    """Translate range bins with zero fill and no circular wraparound."""
+    values = np.asarray(power)
+    shifted = np.zeros_like(values)
+    if offset > 0:
+        shifted[..., offset:] = values[..., :-offset]
+    elif offset < 0:
+        shifted[..., :offset] = values[..., -offset:]
+    else:
+        shifted[...] = values
+    return shifted
