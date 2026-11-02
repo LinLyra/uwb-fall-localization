@@ -1,0 +1,13 @@
+seed: 2027
+signal:
+  expected_radars: 3
+  cir_bins: 368
+  nominal_hz: 50
+decoder:
+  start_threshold: 0.70
+  end_threshold: 0.35
+  min_duration_samples: 10
+  merge_gap_samples: 15
+evaluation:
+  match_iou_threshold: 0.30
+

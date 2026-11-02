@@ -1,0 +1,13 @@
+.DS_Store
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+data/
+artifacts/
+checkpoints/
+runs/
+*.pt
+*.pth
+*.onnx
+
