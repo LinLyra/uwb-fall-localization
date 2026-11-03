@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">Shortcut-aware UWB fall localization system overview</title>
+  <desc id="desc">Three UWB radars observe a person in a room. Complex channel impulse responses are converted to motion and range features, canonicalized across sensors, classified, decoded into fall intervals, and audited for dataset shortcuts.</desc>
+  <defs>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e0f2fe"/><stop offset=".5" stop-color="#38bdf8"/><stop offset="1" stop-color="#0f766e"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#64748b"/></marker>
+    <style>
+      .t{font-family:Inter,Arial,sans-serif;fill:#0f172a}.h{font-size:27px;font-weight:600}.s{font-size:18px}.m{font-size:15px;fill:#475569}.box{fill:#fff;stroke:#cbd5e1;stroke-width:2}.soft{fill:#f8fafc}.accent{fill:#ecfeff;stroke:#0f766e;stroke-width:2}.line{stroke:#64748b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="720" fill="#ffffff"/>
+  <text x="55" y="55" class="t h">Shortcut-aware continuous fall localization from multi-radar UWB</text>
+  <text x="55" y="84" class="t m">What is measured, how events are produced, and where shortcut controls enter the pipeline</text>
+
+  <!-- sensing scene -->
+  <rect x="55" y="120" width="430" height="500" rx="18" class="box soft"/>
+  <text x="80" y="158" class="t h">A  Sensing setup</text>
+  <rect x="92" y="190" width="355" height="300" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="3"/>
+  <path d="M112 220 H427 M112 460 H427" stroke="#e2e8f0" stroke-width="2"/>
+  <!-- radars -->
+  <g class="t s" text-anchor="middle">
+    <rect x="104" y="250" width="46" height="32" rx="6" fill="#0f766e"/><path d="M150 266 Q205 220 256 267" stroke="#14b8a6" fill="none" stroke-width="3" opacity=".7"/>
+    <text x="127" y="305">R0</text>
+    <rect x="378" y="250" width="46" height="32" rx="6" fill="#0f766e"/><path d="M378 266 Q325 220 274 267" stroke="#14b8a6" fill="none" stroke-width="3" opacity=".7"/>
+    <text x="401" y="305">R1</text>
+    <rect x="241" y="438" width="46" height="32" rx="6" fill="#0f766e"/><path d="M264 438 Q220 380 265 326" stroke="#14b8a6" fill="none" stroke-width="3" opacity=".7"/>
+    <text x="264" y="485">R2</text>
+  </g>
+  <!-- person falling -->
+  <circle cx="272" cy="303" r="18" fill="#f59e0b"/>
+  <path d="M263 320 L230 366 L189 380 M230 366 L264 401 M236 355 L293 363" stroke="#f59e0b" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <path d="M205 410 H330" stroke="#cbd5e1" stroke-width="5" stroke-linecap="round"/>
+  <text x="80" y="530" class="t s">Measured quantity</text>
+  <text x="80" y="558" class="t m">Complex channel impulse response (CIR)</text>
+  <text x="80" y="582" class="t m">3 radars × 50 Hz × 184 complex range bins</text>
+  <text x="80" y="606" class="t m">No camera image or body keypoints</text>
+
+  <!-- signal and representation -->
+  <path d="M486 365 H535" class="line"/>
+  <rect x="535" y="120" width="470" height="500" rx="18" class="box"/>
+  <text x="560" y="158" class="t h">B  Signal representation</text>
+  <text x="560" y="187" class="t m">Range–time motion after complex background removal</text>
+  <rect x="570" y="215" width="400" height="155" rx="8" fill="url(#signal)"/>
+  <g stroke="#fff" opacity=".7" fill="none">
+    <path d="M575 330 C650 325 690 260 735 270 S810 345 875 290 S925 250 965 242" stroke-width="12"/>
+    <path d="M575 300 C660 290 710 315 770 300 S870 265 965 280" stroke-width="5"/>
+  </g>
+  <text x="570" y="393" class="t m">time →</text><text x="548" y="330" class="t m" transform="rotate(-90 548 330)">range →</text>
+
+  <g>
+    <rect x="570" y="425" width="178" height="70" rx="10" class="accent"/>
+    <text x="659" y="454" text-anchor="middle" class="t s">Motion + range</text><text x="659" y="478" text-anchor="middle" class="t m">82 window features</text>
+    <rect x="792" y="425" width="178" height="70" rx="10" class="accent"/>
+    <text x="881" y="454" text-anchor="middle" class="t s">Radar canonicalization</text><text x="881" y="478" text-anchor="middle" class="t m">order invariant</text>
+    <path d="M748 460 H786" class="line"/>
+  </g>
+  <text x="570" y="540" class="t s">Robustness component</text>
+  <text x="570" y="568" class="t m">Radar dropout during training supports fixed sensor failure.</text>
+  <text x="570" y="592" class="t m">Absolute range and stream context remain audited risks.</text>
+
+  <!-- inference and audit -->
+  <path d="M1006 365 H1055" class="line"/>
+  <rect x="1055" y="120" width="490" height="500" rx="18" class="box soft"/>
+  <text x="1080" y="158" class="t h">C  Event inference and audit</text>
+  <g>
+    <rect x="1090" y="205" width="125" height="64" rx="10" class="box"/><text x="1152" y="244" text-anchor="middle" class="t s">Random Forest</text>
+    <rect x="1250" y="205" width="125" height="64" rx="10" class="box"/><text x="1312" y="233" text-anchor="middle" class="t s">Nested event</text><text x="1312" y="255" text-anchor="middle" class="t s">decoder</text>
+    <rect x="1410" y="205" width="105" height="64" rx="10" class="accent"/><text x="1462" y="233" text-anchor="middle" class="t s">Fall</text><text x="1462" y="255" text-anchor="middle" class="t s">intervals</text>
+    <path d="M1215 237 H1244" class="line"/><path d="M1375 237 H1404" class="line"/>
+  </g>
+  <!-- event timeline -->
+  <text x="1090" y="320" class="t s">Continuous output</text>
+  <path d="M1090 354 H1510" stroke="#94a3b8" stroke-width="3"/>
+  <rect x="1160" y="338" width="72" height="31" rx="4" fill="#14b8a6"/><rect x="1370" y="338" width="55" height="31" rx="4" fill="#14b8a6"/>
+  <text x="1090" y="395" class="t m">start / end / confidence → tIoU, FA per hour, boundary error</text>
+  <path d="M1300 410 V448" class="line"/>
+  <rect x="1090" y="455" width="425" height="125" rx="12" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1115" y="486" class="t s">Falsification controls</text>
+  <text x="1115" y="516" class="t m">pre-fall only · motion shuffle · join detection</text>
+  <text x="1115" y="542" class="t m">range translation · radar removal · boundary noise</text>
+  <text x="1115" y="568" class="t m">High F1 ≠ transferable fall dynamics</text>
+
+  <text x="55" y="680" class="t m">Task: detect and temporally localize falls in unsegmented UWB streams. The audit tests whether performance comes from motion or dataset construction.</text>
+</svg>

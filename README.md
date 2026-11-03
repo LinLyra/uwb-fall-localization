@@ -16,6 +16,8 @@ Tree models outperform the published energy baseline, but most of the gain survi
 
 Five-seed RF results range from 0.6229 to 0.6763. Evaluation uses five subject-disjoint validation streams and 67 evaluable events, so conclusions are limited to this release and its stream construction.
 
+![System overview](docs/figures/system-overview.svg)
+
 ## Pipeline
 
 ```mermaid
