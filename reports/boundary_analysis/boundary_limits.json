@@ -1,0 +1,70 @@
+{
+  "event_count": 67,
+  "duration_seconds": {
+    "q00": 1.0199999999999818,
+    "q10": 1.2519999999999911,
+    "q25": 1.5299999999999727,
+    "q50": 2.0,
+    "q75": 2.240000000000009,
+    "q90": 2.8480000000000074,
+    "q100": 4.399999999999864
+  },
+  "median_event_allowed_error_seconds": {
+    "tiou_0.3": {
+      "outward": 2.3333333333333335,
+      "inward": 0.7,
+      "translation": 1.0769230769230769
+    },
+    "tiou_0.5": {
+      "outward": 1.0,
+      "inward": 0.5,
+      "translation": 0.6666666666666666
+    },
+    "tiou_0.7": {
+      "outward": 0.4285714285714286,
+      "inward": 0.30000000000000004,
+      "translation": 0.3529411764705883
+    }
+  },
+  "uniform_independent_boundary_noise": {
+    "plus_minus_0.5_seconds": {
+      "fraction_at_tiou_0.3_mean": 0.997786567164179,
+      "fraction_at_tiou_0.5_mean": 0.9731925373134327,
+      "fraction_at_tiou_0.7_mean": 0.7388194029850745,
+      "fraction_at_tiou_0.3_ci95": [
+        0.9850746268656716,
+        1.0
+      ],
+      "fraction_at_tiou_0.5_ci95": [
+        0.9253731343283582,
+        1.0
+      ],
+      "fraction_at_tiou_0.7_ci95": [
+        0.6417910447761194,
+        0.835820895522388
+      ]
+    },
+    "plus_minus_1.0_seconds": {
+      "fraction_at_tiou_0.3_mean": 0.8990268656716418,
+      "fraction_at_tiou_0.5_mean": 0.6981283582089552,
+      "fraction_at_tiou_0.7_mean": 0.282755223880597,
+      "fraction_at_tiou_0.3_ci95": [
+        0.835820895522388,
+        0.9552238805970149
+      ],
+      "fraction_at_tiou_0.5_ci95": [
+        0.5970149253731343,
+        0.7910447761194029
+      ],
+      "fraction_at_tiou_0.7_ci95": [
+        0.1791044776119403,
+        0.3880597014925373
+      ]
+    }
+  },
+  "simulation": {
+    "replicates": 10000,
+    "seed": 2027,
+    "warning": "Sensitivity analysis under independent uniform perturbations, not an empirical annotation-agreement estimate."
+  }
+}
