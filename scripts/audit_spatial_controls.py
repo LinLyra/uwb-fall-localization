@@ -31,6 +31,7 @@ def transform_features(
         [f"range_shift_{offset:+d}" for offset in offsets]
         + [f"range_mask_{fraction:.3f}" for fraction in mask_fractions]
         + [f"drop_radar_{index}" for index in range(3)]
+        + [f"mean_impute_radar_{index}" for index in range(3)]
         + ["drop_highest_energy"]
         + ["radar_order_" + "".join(map(str, order)) for order in permutations]
     )
@@ -68,6 +69,10 @@ def transform_features(
                 dropped = power.copy()
                 dropped[radar] = 0.0
                 collected[f"drop_radar_{radar}"].append(power_features(dropped))
+                imputed = power.copy()
+                available = [index for index in range(3) if index != radar]
+                imputed[radar] = np.mean(power[available], axis=0)
+                collected[f"mean_impute_radar_{radar}"].append(power_features(imputed))
             strongest = int(np.argmax(np.mean(power, axis=(1, 2))))
             dropped = power.copy()
             dropped[strongest] = 0.0

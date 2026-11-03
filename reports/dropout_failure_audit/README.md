@@ -13,9 +13,13 @@ Models and nested decoder settings are frozen before each failure condition.
 | Highest-energy radar missing per window | 0.0000 | 0.0444 | 6.9% |
 
 Radar dropout succeeds at its stated target. The clean-trained model emits no
-usable events after any fixed radar is zeroed, while dropout training recovers
-substantial performance for all three fixed failures. Radar 0 can be removed
-with almost no loss; radar 2 remains the weakest failure case.
+usable events after any fixed radar is zeroed. Because zero filling is an
+out-of-distribution representation of sensor failure, the
+[fair imputation audit](../imputation_audit/README.md) also compares against
+replacing the failed sensor with the mean of the two available sensors. Dropout
+training remains clearly better for radar 0 and radar 2; its advantage for radar
+1 is small. Radar 0 can be removed with almost no loss, while radar 2 remains the
+weakest failure case.
 
 The method does not handle adversarial removal of the strongest radar in each
 window. That condition changes which physical sensor is absent over time and

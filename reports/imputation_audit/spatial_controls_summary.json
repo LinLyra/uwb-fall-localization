@@ -1,0 +1,149 @@
+{
+  "range_shift_-24": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "range_shift_-16": {
+    "ranking_f1_mean": 0.18604651162790697,
+    "f1_at_0.3": 0.11627906976744184,
+    "f1_at_0.7": 0.023255813953488372,
+    "false_alarms_per_hour_at_0.3": 6.83315708126576,
+    "prediction_count": 19
+  },
+  "range_shift_-8": {
+    "ranking_f1_mean": 0.6666666666666666,
+    "f1_at_0.3": 0.734375,
+    "f1_at_0.7": 0.25,
+    "false_alarms_per_hour_at_0.3": 6.83315708126576,
+    "prediction_count": 68
+  },
+  "range_shift_+8": {
+    "ranking_f1_mean": 0.3036303630363036,
+    "f1_at_0.3": 0.31683168316831684,
+    "f1_at_0.7": 0.019801980198019802,
+    "false_alarms_per_hour_at_0.3": 8.78548767591312,
+    "prediction_count": 40
+  },
+  "range_shift_+16": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "range_shift_+24": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "range_mask_0.125": {
+    "ranking_f1_mean": 0.553763440860215,
+    "f1_at_0.3": 0.5645161290322579,
+    "f1_at_0.7": 0.16129032258064516,
+    "false_alarms_per_hour_at_0.3": 10.737818270560481,
+    "prediction_count": 80
+  },
+  "range_mask_0.250": {
+    "ranking_f1_mean": 0.22895622895622894,
+    "f1_at_0.3": 0.1818181818181818,
+    "f1_at_0.7": 0.0404040404040404,
+    "false_alarms_per_hour_at_0.3": 11.22590091922232,
+    "prediction_count": 39
+  },
+  "range_mask_0.500": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "drop_radar_0": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "drop_radar_1": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "drop_radar_2": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "mean_impute_radar_0": {
+    "ranking_f1_mean": 0.0905349794238683,
+    "f1_at_0.3": 0.024691358024691357,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 6.34507443260392,
+    "prediction_count": 17
+  },
+  "mean_impute_radar_1": {
+    "ranking_f1_mean": 0.435374149659864,
+    "f1_at_0.3": 0.4693877551020407,
+    "f1_at_0.7": 0.14285714285714285,
+    "false_alarms_per_hour_at_0.3": 3.9046611892947203,
+    "prediction_count": 36
+  },
+  "mean_impute_radar_2": {
+    "ranking_f1_mean": 0.14559386973180075,
+    "f1_at_0.3": 0.11494252873563218,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 7.3212397299276,
+    "prediction_count": 24
+  },
+  "drop_highest_energy": {
+    "ranking_f1_mean": 0.0,
+    "f1_at_0.3": 0.0,
+    "f1_at_0.7": 0.0,
+    "false_alarms_per_hour_at_0.3": 0.0,
+    "prediction_count": 0
+  },
+  "radar_order_021": {
+    "ranking_f1_mean": 0.6619385342789598,
+    "f1_at_0.3": 0.7234042553191488,
+    "f1_at_0.7": 0.15602836879432624,
+    "false_alarms_per_hour_at_0.3": 11.22590091922232,
+    "prediction_count": 108
+  },
+  "radar_order_102": {
+    "ranking_f1_mean": 0.6619385342789598,
+    "f1_at_0.3": 0.7234042553191488,
+    "f1_at_0.7": 0.15602836879432624,
+    "false_alarms_per_hour_at_0.3": 11.22590091922232,
+    "prediction_count": 108
+  },
+  "radar_order_120": {
+    "ranking_f1_mean": 0.6619385342789598,
+    "f1_at_0.3": 0.7234042553191488,
+    "f1_at_0.7": 0.15602836879432624,
+    "false_alarms_per_hour_at_0.3": 11.22590091922232,
+    "prediction_count": 108
+  },
+  "radar_order_201": {
+    "ranking_f1_mean": 0.6619385342789598,
+    "f1_at_0.3": 0.7234042553191488,
+    "f1_at_0.7": 0.15602836879432624,
+    "false_alarms_per_hour_at_0.3": 11.22590091922232,
+    "prediction_count": 108
+  },
+  "radar_order_210": {
+    "ranking_f1_mean": 0.6619385342789598,
+    "f1_at_0.3": 0.7234042553191488,
+    "f1_at_0.7": 0.15602836879432624,
+    "false_alarms_per_hour_at_0.3": 11.22590091922232,
+    "prediction_count": 108
+  }
+}
