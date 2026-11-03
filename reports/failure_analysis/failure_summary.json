@@ -1,0 +1,32 @@
+{
+  "val_00": {
+    "tp": 17,
+    "fp": 8,
+    "fn": 4,
+    "ignored_predictions": 11
+  },
+  "val_01": {
+    "tp": 15,
+    "fp": 3,
+    "fn": 3,
+    "ignored_predictions": 7
+  },
+  "val_02": {
+    "tp": 13,
+    "fp": 9,
+    "fn": 6,
+    "ignored_predictions": 11
+  },
+  "val_03": {
+    "tp": 3,
+    "fp": 6,
+    "fn": 2,
+    "ignored_predictions": 7
+  },
+  "val_04": {
+    "tp": 3,
+    "fp": 1,
+    "fn": 1,
+    "ignored_predictions": 1
+  }
+}
