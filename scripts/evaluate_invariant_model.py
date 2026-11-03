@@ -21,6 +21,7 @@ def main() -> None:
     parser.add_argument("--package", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--seed", type=int, default=2027)
+    parser.add_argument("--augmentation-cache", type=Path)
     args = parser.parse_args()
     sys.path.insert(0, str(args.package / "src"))
     from abc2027.evaluate import evaluate, load_ground_truth, stream_durations
@@ -28,6 +29,10 @@ def main() -> None:
     train = load_cache(args.cache / "train_w100_h25.npz")
     val = load_cache(args.cache / "val_w100_h25.npz")
     train_x = canonicalize_radar_features(train["features"])
+    if args.augmentation_cache is not None:
+        augmented = load_cache(args.augmentation_cache)
+        train_x = np.concatenate([train_x, augmented["features"]], axis=0)
+        train["labels"] = np.concatenate([train["labels"], augmented["labels"]], axis=0)
     val_x = canonicalize_radar_features(val["features"])
     model = RandomForestClassifier(
         n_estimators=300,
@@ -90,6 +95,7 @@ def main() -> None:
     summary = {
         "representation": "sorted three-radar groups; scalar entropy unchanged",
         "seed": args.seed,
+        "augmentation_cache": str(args.augmentation_cache) if args.augmentation_cache else None,
         "ranking_f1_mean": report["ranking_score"]["f1_mean"],
         "f1_by_tiou": {key: value["f1"] for key, value in report["by_theta"].items()},
         "false_alarms_per_hour_at_0.3": report["by_theta"]["0.3"]["false_alarms_per_hour"],

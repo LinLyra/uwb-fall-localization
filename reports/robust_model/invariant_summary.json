@@ -1,0 +1,60 @@
+{
+  "representation": "sorted three-radar groups; scalar entropy unchanged",
+  "seed": 2027,
+  "augmentation_cache": "data/augmented/train_robust_v1.npz",
+  "ranking_f1_mean": 0.6308724832214765,
+  "f1_by_tiou": {
+    "0.1": 0.8187919463087248,
+    "0.3": 0.6845637583892618,
+    "0.5": 0.38926174496644295,
+    "0.7": 0.13422818791946306
+  },
+  "false_alarms_per_hour_at_0.3": 15.13056210851704,
+  "folds": {
+    "val_00": {
+      "selected_decoder": {
+        "threshold": 0.45,
+        "merge_gap": 1.0,
+        "trim": 0.75
+      },
+      "selection_ranking_f1": 0.6666666666666666,
+      "held_out_ranking_f1": 0.7101449275362319
+    },
+    "val_01": {
+      "selected_decoder": {
+        "threshold": 0.8,
+        "merge_gap": 0.0,
+        "trim": 0.25
+      },
+      "selection_ranking_f1": 0.6444444444444445,
+      "held_out_ranking_f1": 0.5904761904761905
+    },
+    "val_02": {
+      "selected_decoder": {
+        "threshold": 0.45,
+        "merge_gap": 1.0,
+        "trim": 0.75
+      },
+      "selection_ranking_f1": 0.7033639143730887,
+      "held_out_ranking_f1": 0.62015503875969
+    },
+    "val_03": {
+      "selected_decoder": {
+        "threshold": 0.45,
+        "merge_gap": 1.0,
+        "trim": 0.75
+      },
+      "selection_ranking_f1": 0.6960784313725489,
+      "held_out_ranking_f1": 0.5416666666666667
+    },
+    "val_04": {
+      "selected_decoder": {
+        "threshold": 0.45,
+        "merge_gap": 1.0,
+        "trim": 0.75
+      },
+      "selection_ranking_f1": 0.6853146853146853,
+      "held_out_ranking_f1": 0.5925925925925926
+    }
+  }
+}
