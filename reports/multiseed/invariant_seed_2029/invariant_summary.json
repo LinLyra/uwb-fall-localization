@@ -1,0 +1,62 @@
+{
+  "representation": "sorted three-radar groups; scalar entropy unchanged",
+  "seed": 2029,
+  "augmentation_cache": null,
+  "augmentation_prefix": null,
+  "augmentation_fraction": null,
+  "ranking_f1_mean": 0.6477541371158392,
+  "f1_by_tiou": {
+    "0.1": 0.8368794326241135,
+    "0.3": 0.7092198581560283,
+    "0.5": 0.39716312056737585,
+    "0.7": 0.15602836879432624
+  },
+  "false_alarms_per_hour_at_0.3": 11.71398356788416,
+  "folds": {
+    "val_00": {
+      "selected_decoder": {
+        "threshold": 0.55,
+        "merge_gap": 0.0,
+        "trim": 0.75
+      },
+      "selection_ranking_f1": 0.6472491909385113,
+      "held_out_ranking_f1": 0.6818181818181818
+    },
+    "val_01": {
+      "selected_decoder": {
+        "threshold": 0.65,
+        "merge_gap": 1.0,
+        "trim": 0.75
+      },
+      "selection_ranking_f1": 0.6531986531986532,
+      "held_out_ranking_f1": 0.7027027027027027
+    },
+    "val_02": {
+      "selected_decoder": {
+        "threshold": 0.65,
+        "merge_gap": 1.0,
+        "trim": 0.75
+      },
+      "selection_ranking_f1": 0.68013468013468,
+      "held_out_ranking_f1": 0.6306306306306307
+    },
+    "val_03": {
+      "selected_decoder": {
+        "threshold": 0.6,
+        "merge_gap": 1.0,
+        "trim": 0.75
+      },
+      "selection_ranking_f1": 0.6876640419947506,
+      "held_out_ranking_f1": 0.4888888888888889
+    },
+    "val_04": {
+      "selected_decoder": {
+        "threshold": 0.65,
+        "merge_gap": 1.0,
+        "trim": 0.75
+      },
+      "selection_ranking_f1": 0.671875,
+      "held_out_ranking_f1": 0.5833333333333334
+    }
+  }
+}
