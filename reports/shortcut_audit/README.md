@@ -75,3 +75,26 @@ two-sided p-value cannot fall below 0.0625 for a result aligned in every stream.
 The clean-versus-shuffled interval includes zero and the randomization result is
 unambiguous. There is no evidence here that temporal coherence accounts for a
 substantial part of the RF gain.
+
+## Synthetic join detectability
+
+A separate Random Forest is trained to distinguish two-second windows centred
+on a stream join from matched windows at least five seconds away. It is fit on
+training streams and evaluated on validation streams using the radar-order
+invariant representation.
+
+| Measure | Result |
+|---|---:|
+| Validation ROC-AUC | 0.9811 |
+| Stream-bootstrap 95% interval | [0.9677, 0.9918] |
+| Validation join / non-join windows | 583 / 583 |
+
+Per-stream AUC ranges from 0.9584 to 1.000. Synthetic joins are therefore highly
+detectable despite the 0.2-second crossfade.
+
+For the 67 evaluable falls, the median event-centre distance to the nearest join
+is 4.44 seconds. No event is within two seconds, 62.7% are within five seconds,
+and every event is within ten seconds. Detectability alone does not prove that
+the fall model uses joins, but the strong temporal coupling provides a plausible
+mechanism for the pre-fall AUC of 0.94. Future evaluation should stratify by
+join distance or rebuild streams with substantially wider, matched margins.

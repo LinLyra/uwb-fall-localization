@@ -1,0 +1,28 @@
+{
+  "roc_auc": 0.9810894144853174,
+  "stream_bootstrap_ci_95": [
+    0.9677326660360868,
+    0.9917680719536646
+  ],
+  "train_positive": 1745,
+  "train_negative": 1745,
+  "validation_positive": 583,
+  "validation_negative": 583,
+  "per_stream_roc_auc": {
+    "val_00": 0.9834505113221329,
+    "val_01": 0.9863563010416158,
+    "val_02": 0.9583842730695876,
+    "val_03": 0.9938188658962643,
+    "val_04": 1.0
+  },
+  "window_s": 2.0,
+  "negative_exclusion_s": 5.0,
+  "seed": 2027,
+  "evaluable_event_distance_to_nearest_join_s": {
+    "median": 4.439999999999827,
+    "q90": 6.5160000000000755,
+    "fraction_within_2s": 0.0,
+    "fraction_within_5s": 0.6268656716417911,
+    "fraction_within_10s": 1.0
+  }
+}
