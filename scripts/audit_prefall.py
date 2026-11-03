@@ -12,6 +12,8 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score
 
+from uwb_fall.invariance import canonicalize_radar_features
+
 
 def load_cache(path: Path) -> dict[str, np.ndarray]:
     with np.load(path) as data:
@@ -87,6 +89,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--replicates", type=int, default=10_000)
     parser.add_argument("--seed", type=int, default=2027)
+    parser.add_argument("--canonicalize-radars", action="store_true")
     args = parser.parse_args()
     rng = np.random.default_rng(args.seed)
 
@@ -96,6 +99,9 @@ def main() -> None:
     val_events = read_events(args.events, "val", ignore_flagged=True)
     train_x, train_y, _ = make_examples(train_cache, train_events, rng)
     val_x, val_y, val_groups = make_examples(val_cache, val_events, rng)
+    if args.canonicalize_radars:
+        train_x = canonicalize_radar_features(train_x)
+        val_x = canonicalize_radar_features(val_x)
 
     model = RandomForestClassifier(
         n_estimators=300,
@@ -132,6 +138,7 @@ def main() -> None:
             "bootstrap_unit": "stream",
             "bootstrap_replicates": args.replicates,
             "seed": args.seed,
+            "radar_canonicalization": args.canonicalize_radars,
         },
         "roc_auc": estimate,
         "stream_bootstrap_ci_95": [float(np.quantile(values, 0.025)), float(np.quantile(values, 0.975))],

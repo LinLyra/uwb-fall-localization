@@ -1,0 +1,28 @@
+{
+  "protocol": {
+    "window_s": 2.0,
+    "lead_s": 0.5,
+    "negative_exclusion_s": 5.0,
+    "train_positive": 359,
+    "train_negative": 359,
+    "validation_positive": 67,
+    "validation_negative": 67,
+    "bootstrap_unit": "stream",
+    "bootstrap_replicates": 10000,
+    "seed": 2027,
+    "radar_canonicalization": true
+  },
+  "roc_auc": 0.9402985074626866,
+  "stream_bootstrap_ci_95": [
+    0.9023314429741651,
+    0.9916701374427322
+  ],
+  "per_stream_roc_auc": {
+    "val_00": 0.9206349206349206,
+    "val_01": 0.9938271604938271,
+    "val_02": 0.9058171745152355,
+    "val_03": 0.84,
+    "val_04": 1.0
+  },
+  "decision": "reject_H2"
+}
