@@ -94,7 +94,21 @@ detectable despite the 0.2-second crossfade.
 
 For the 67 evaluable falls, the median event-centre distance to the nearest join
 is 4.44 seconds. No event is within two seconds, 62.7% are within five seconds,
-and every event is within ten seconds. Detectability alone does not prove that
-the fall model uses joins, but the strong temporal coupling provides a plausible
-mechanism for the pre-fall AUC of 0.94. Future evaluation should stratify by
-join distance or rebuild streams with substantially wider, matched margins.
+and every event is within ten seconds. Those percentages look suspicious in
+isolation, but stream-matched controls do not support that interpretation.
+
+We drew 10,000 sets of random timestamps, preserving the number of falls in
+each validation stream, and repeated the analysis with matched ADL windows at
+least five seconds from an evaluable event. Random timestamps had a mean median
+distance of 3.35 seconds (95% interval 2.49--4.23), while ADL windows had a mean
+median of 3.31 seconds (2.46--4.18). Their mean fractions within five seconds
+were both 70.9%, compared with 62.7% for falls. One-sided randomization p-values
+for falls being closer were 0.993 and 0.994, respectively.
+
+Therefore, synthetic joins are highly detectable, but falls are not unusually
+close to them. The proposed temporal-coupling explanation for the pre-fall AUC
+is rejected. Join artefacts remain a property of the benchmark worth reporting,
+not an evidenced shortcut used by the current fall detector. The source of the
+pre-fall signal remains unresolved.
+
+![Distance from fall and control timestamps to the nearest synthetic join](join_proximity.png)
