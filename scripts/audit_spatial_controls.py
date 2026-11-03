@@ -15,6 +15,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 from train_tabular_baselines import decode, load_cache, write_predictions
 from uwb_fall.features import power_features, shift_range
+from uwb_fall.invariance import canonicalize_radar_features
 
 
 def transform_features(
@@ -86,6 +87,10 @@ def main() -> None:
     parser.add_argument("--nested-summary", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--seed", type=int, default=2027)
+    parser.add_argument("--augmentation-cache", type=Path)
+    parser.add_argument("--augmentation-prefix")
+    parser.add_argument("--augmentation-fraction", type=float, default=0.25)
+    parser.add_argument("--canonicalize-radars", action="store_true")
     args = parser.parse_args()
     sys.path.insert(0, str(args.package / "src"))
     from abc2027.evaluate import evaluate, load_ground_truth, stream_durations
@@ -100,16 +105,30 @@ def main() -> None:
         n_jobs=-1,
         random_state=args.seed,
     )
-    model.fit(train["features"], train["labels"])
+    train_x = canonicalize_radar_features(train["features"]) if args.canonicalize_radars else train["features"]
+    train_y = train["labels"]
+    if args.augmentation_cache:
+        augmented = load_cache(args.augmentation_cache)
+        eligible = np.arange(len(augmented["labels"]))
+        if args.augmentation_prefix:
+            eligible = eligible[np.char.startswith(augmented["kinds"].astype(str), args.augmentation_prefix)]
+        count = min(len(eligible), int(round(len(train_y) * args.augmentation_fraction)))
+        selected = np.random.default_rng(args.seed).choice(eligible, size=count, replace=False)
+        train_x = np.concatenate([train_x, augmented["features"][selected]])
+        train_y = np.concatenate([train_y, augmented["labels"][selected]])
+    model.fit(train_x, train_y)
     transformed = transform_features(
         args.package / "streams" / "val", val["stream_ids"], val["starts"], args.seed
     )
-    folds = json.loads(args.nested_summary.read_text(encoding="utf-8"))["all"]["folds"]
+    nested_data = json.loads(args.nested_summary.read_text(encoding="utf-8"))
+    folds = nested_data.get("all", nested_data)["folds"]
     durations = stream_durations(args.package / "streams" / "val")
     ground = load_ground_truth(args.package / "streams_events.csv", ignore_flagged=True)
     args.output.mkdir(parents=True, exist_ok=True)
     summary: dict[str, dict] = {}
     for name, features in transformed.items():
+        if args.canonicalize_radars:
+            features = canonicalize_radar_features(features)
         scores = model.predict_proba(features)[:, 1]
         rows: list[dict] = []
         for stream_id in sorted(set(val["stream_ids"].tolist())):
