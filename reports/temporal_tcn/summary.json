@@ -1,0 +1,127 @@
+{
+  "model": "TinyTCN: 1x1 projection, three residual dilated Conv1d blocks, global pooling",
+  "device": "cpu",
+  "seed": 2027,
+  "epochs": 12,
+  "parameters": 37393,
+  "clean": {
+    "ranking_f1_mean": 0.5731067320056998,
+    "f1_by_tiou": {
+      "0.1": 0.7338129496402879,
+      "0.3": 0.6376811594202898,
+      "0.5": 0.3478260869565218,
+      "0.7": 0.057971014492753624
+    },
+    "false_alarms_per_hour_at_0.3": 13.178231513869681,
+    "folds": {
+      "val_00": {
+        "selected_decoder": {
+          "threshold": 0.9,
+          "merge_gap": 0.5,
+          "trim": 0.25
+        },
+        "selection_ranking_f1": 0.5704467353951891
+      },
+      "val_01": {
+        "selected_decoder": {
+          "threshold": 0.9,
+          "merge_gap": 0.5,
+          "trim": 0.5
+        },
+        "selection_ranking_f1": 0.552190513168964
+      },
+      "val_02": {
+        "selected_decoder": {
+          "threshold": 0.9,
+          "merge_gap": 0.5,
+          "trim": 0.5
+        },
+        "selection_ranking_f1": 0.616969696969697
+      },
+      "val_03": {
+        "selected_decoder": {
+          "threshold": 0.9,
+          "merge_gap": 0.0,
+          "trim": 0.5
+        },
+        "selection_ranking_f1": 0.6178861788617886
+      },
+      "val_04": {
+        "selected_decoder": {
+          "threshold": 0.9,
+          "merge_gap": 0.5,
+          "trim": 0.75
+        },
+        "selection_ranking_f1": 0.6032491681346642
+      }
+    }
+  },
+  "motion_shuffled": {
+    "ranking_f1_mean": 0.5039187392128569,
+    "f1_by_tiou": {
+      "0.1": 0.7012987012987013,
+      "0.3": 0.5882352941176472,
+      "0.5": 0.22222222222222224,
+      "0.7": 0.0522875816993464
+    },
+    "false_alarms_per_hour_at_0.3": 20.01138859513544,
+    "folds": {
+      "val_00": {
+        "selected_decoder": {
+          "threshold": 0.9,
+          "merge_gap": 0.5,
+          "trim": 0.25
+        },
+        "selection_ranking_f1": 0.5704467353951891
+      },
+      "val_01": {
+        "selected_decoder": {
+          "threshold": 0.9,
+          "merge_gap": 0.5,
+          "trim": 0.5
+        },
+        "selection_ranking_f1": 0.552190513168964
+      },
+      "val_02": {
+        "selected_decoder": {
+          "threshold": 0.9,
+          "merge_gap": 0.5,
+          "trim": 0.5
+        },
+        "selection_ranking_f1": 0.616969696969697
+      },
+      "val_03": {
+        "selected_decoder": {
+          "threshold": 0.9,
+          "merge_gap": 0.0,
+          "trim": 0.5
+        },
+        "selection_ranking_f1": 0.6178861788617886
+      },
+      "val_04": {
+        "selected_decoder": {
+          "threshold": 0.9,
+          "merge_gap": 0.5,
+          "trim": 0.75
+        },
+        "selection_ranking_f1": 0.6032491681346642
+      }
+    },
+    "decoder": "clean nested decoder frozen"
+  },
+  "prefall": {
+    "roc_auc": 0.6778792604143462,
+    "stream_bootstrap_ci_95": [
+      0.621695241147252,
+      0.7483090067639729
+    ],
+    "per_stream_roc_auc": {
+      "val_00": 0.6916099773242631,
+      "val_01": 0.5864197530864197,
+      "val_02": 0.7202216066481995,
+      "val_03": 0.8,
+      "val_04": 0.8125
+    },
+    "validation_examples": 134
+  }
+}

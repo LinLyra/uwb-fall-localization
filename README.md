@@ -4,7 +4,7 @@ Continuous fall detection and temporal localization from three UWB radars. The p
 
 ## Main finding
 
-Tree models outperform the published energy baseline, but most of the gain survives temporal motion destruction. Pre-fall context and synthetic joins are highly predictable, and the baseline is sensitive to absolute range position. A high event F1 here does not by itself establish transferable fall recognition.
+Tree models outperform the published energy baseline, but most of the gain survives temporal motion destruction. Pre-fall context, absolute range, and synthetic join boundaries are highly predictable. Matched controls show that falls are not unusually close to joins, so join detectability is not evidence that the fall detector uses it. A high event F1 here does not by itself establish transferable fall recognition.
 
 | Result | Value |
 |---|---:|
@@ -13,6 +13,8 @@ Tree models outperform the published energy baseline, but most of the gain survi
 | Pre-fall-only ROC-AUC | 0.9407 |
 | Join-boundary ROC-AUC | 0.9811 |
 | Motion-shuffled ranking F1 | 0.6308 |
+| TinyTCN clean / shuffled ranking F1 | 0.5731 / 0.5039 |
+| TinyTCN pre-fall ROC-AUC | 0.6779 |
 
 Five-seed RF results range from 0.6229 to 0.6763. Evaluation uses five subject-disjoint validation streams and 67 evaluable events, so conclusions are limited to this release and its stream construction.
 
@@ -33,7 +35,9 @@ flowchart LR
     H --> J[Motion shuffle / radar failure]
 ```
 
-Radar-group sorting makes the representation exactly invariant to sensor order. Radar-dropout training recovers ranking F1 of 0.6450, 0.4485, and 0.3467 when radar 0, 1, or 2 is missing; the clean-trained model scores zero in all three tests.
+Radar-group sorting makes the representation exactly invariant to sensor order. Radar-dropout training reaches ranking F1 of 0.6450, 0.4485, and 0.3467 when radar 0, 1, or 2 is missing. A fair mean-imputation baseline reaches 0.0905, 0.4354, and 0.1456, so the robustness gain is clear for two sensors and marginal for one.
+
+A 37k-parameter TCN supplies a genuinely order-sensitive control. Shuffling time reduces its score by 12.1%, compared with 4.1% for the summary-feature RF, and lowers pre-fall predictability from 0.9407 to 0.6779. It uses temporal evidence more strongly but has lower clean localization performance, exposing a robustness–accuracy trade-off rather than a new state of the art.
 
 ## Reproduce
 
@@ -57,6 +61,8 @@ Place the extracted official v1 package at `data/extracted/abc2027_uwb_train_v1`
 - [Boundary analysis](reports/boundary_analysis/README.md)
 - [Failure analysis](reports/failure_analysis/README.md)
 - [Missing-radar evaluation](reports/dropout_failure_audit/README.md)
+- [Fair missing-radar baselines](reports/imputation_audit/README.md)
+- [Temporal TCN controls](reports/temporal_tcn/README.md)
 - [Seed stability](reports/multiseed/README.md)
 
 ## Scope
